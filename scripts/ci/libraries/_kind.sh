@@ -329,25 +329,25 @@ function prepare_kubernetes_resources() {
         sed -e "/{{INIT_GIT_SYNC}}/{r ${TEMPLATE_DIRNAME}/init_git_sync.template.yaml" -e 'd}' \
             "${TEMPLATE_DIRNAME}/airflow.template.yaml" >"${BUILD_DIRNAME}/airflow.yaml"
     fi
-    sed -i "s|{{AIRFLOW_KUBERNETES_IMAGE}}|${AIRFLOW_KUBERNETES_IMAGE}|g" "${BUILD_DIRNAME}/airflow.yaml"
+    sed -i '' "s|{{AIRFLOW_KUBERNETES_IMAGE}}|${AIRFLOW_KUBERNETES_IMAGE}|g" "${BUILD_DIRNAME}/airflow.yaml"
 
-    sed -i "s|{{CONFIGMAP_GIT_REPO}}|${CONFIGMAP_GIT_REPO}|g" "${BUILD_DIRNAME}/airflow.yaml"
-    sed -i "s|{{CONFIGMAP_BRANCH}}|${CONFIGMAP_BRANCH}|g" "${BUILD_DIRNAME}/airflow.yaml"
-    sed -i "s|{{INIT_DAGS_VOLUME_NAME}}|${INIT_DAGS_VOLUME_NAME}|g" "${BUILD_DIRNAME}/airflow.yaml"
-    sed -i "s|{{POD_AIRFLOW_DAGS_VOLUME_NAME}}|${POD_AIRFLOW_DAGS_VOLUME_NAME}|g" \
+    sed -i '' "s|{{CONFIGMAP_GIT_REPO}}|${CONFIGMAP_GIT_REPO}|g" "${BUILD_DIRNAME}/airflow.yaml"
+    sed -i '' "s|{{CONFIGMAP_BRANCH}}|${CONFIGMAP_BRANCH}|g" "${BUILD_DIRNAME}/airflow.yaml"
+    sed -i '' "s|{{INIT_DAGS_VOLUME_NAME}}|${INIT_DAGS_VOLUME_NAME}|g" "${BUILD_DIRNAME}/airflow.yaml"
+    sed -i '' "s|{{POD_AIRFLOW_DAGS_VOLUME_NAME}}|${POD_AIRFLOW_DAGS_VOLUME_NAME}|g" \
         "${BUILD_DIRNAME}/airflow.yaml"
 
     sed "s|{{CONFIGMAP_DAGS_FOLDER}}|${CONFIGMAP_DAGS_FOLDER}|g" \
         "${TEMPLATE_DIRNAME}/configmaps.template.yaml" >"${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{CONFIGMAP_GIT_REPO}}|${CONFIGMAP_GIT_REPO}|g" "${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{CONFIGMAP_BRANCH}}|${CONFIGMAP_BRANCH}|g" "${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{CONFIGMAP_GIT_DAGS_FOLDER_MOUNT_POINT}}|${CONFIGMAP_GIT_DAGS_FOLDER_MOUNT_POINT}|g" \
+    sed -i  '' "s|{{CONFIGMAP_GIT_REPO}}|${CONFIGMAP_GIT_REPO}|g" "${BUILD_DIRNAME}/configmaps.yaml"
+    sed -i '' "s|{{CONFIGMAP_BRANCH}}|${CONFIGMAP_BRANCH}|g" "${BUILD_DIRNAME}/configmaps.yaml"
+    sed -i '' "s|{{CONFIGMAP_GIT_DAGS_FOLDER_MOUNT_POINT}}|${CONFIGMAP_GIT_DAGS_FOLDER_MOUNT_POINT}|g" \
         "${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{CONFIGMAP_DAGS_VOLUME_CLAIM}}|${CONFIGMAP_DAGS_VOLUME_CLAIM}|g" \
+    sed -i '' "s|{{CONFIGMAP_DAGS_VOLUME_CLAIM}}|${CONFIGMAP_DAGS_VOLUME_CLAIM}|g" \
         "${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{AIRFLOW_KUBERNETES_IMAGE_NAME}}|${AIRFLOW_KUBERNETES_IMAGE_NAME}|g" \
+    sed -i '' "s|{{AIRFLOW_KUBERNETES_IMAGE_NAME}}|${AIRFLOW_KUBERNETES_IMAGE_NAME}|g" \
         "${BUILD_DIRNAME}/configmaps.yaml"
-    sed -i "s|{{AIRFLOW_KUBERNETES_IMAGE_TAG}}|${AIRFLOW_KUBERNETES_IMAGE_TAG}|g" \
+    sed -i '' "s|{{AIRFLOW_KUBERNETES_IMAGE_TAG}}|${AIRFLOW_KUBERNETES_IMAGE_TAG}|g" \
         "${BUILD_DIRNAME}/configmaps.yaml"
 }
 
